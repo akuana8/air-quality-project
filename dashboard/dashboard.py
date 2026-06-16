@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from pathlib import Path
 
 # PAGE CONFIG
 
@@ -15,7 +16,8 @@ st.set_page_config(
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("main_data.csv")
+    data_path = Path(__file__).parent / "main_data.csv"
+    df = pd.read_csv(data_path)
     return df
 
 air_quality_df = load_data()
